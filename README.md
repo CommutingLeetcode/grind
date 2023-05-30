@@ -36,10 +36,8 @@ data structure(s) used
 
 ## Format:
 
-1. Each participant should create a branch from main that is named username's-branch
-2. The base repo (same hirearchy as README.md) should contain a folder with the same name as your branch
-3. For each problem, a folder called ####-title_name should be created in the user's folder that contains the solution file. An example of would be creatin the folder 0001-Two_Sum, containing Two_Sum.py
-4. Upon pushing a solution, the commit message should be "solve #-title name", an example would be "solve 1-two sum" 
+1. Each participant should create a branch from main
+2. For each problem, put the solution and the brief explanation (as a comment) on a single code file (example: .py) called ####-title-name . An example of would be 0001-two-sum.py
 
 ## FAQ:
 - Why not do the same problem so that we can discuss it together?
