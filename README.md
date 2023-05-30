@@ -34,6 +34,13 @@ data structure(s) used
 3. One thing that’s unique about this problem and what you learnt from it
 4. Failure to complete the steps above will result in owing money to other members, a total of 15 dollars divided equally to other members who are participating
 
+## Format:
+
+1. Each participant should create a branch from main that is named username's-branch
+2. The base repo (same hirearchy as README.md) should contain a folder with the same name as your branch
+3. For each problem, a folder called ####-title_name should be created in the user's folder that contains the solution file. An example of would be creatin the folder 0001-Two_Sum, containing Two_Sum.py
+4. Upon pushing a solution, the commit message should be "solve #-title name", an example would be "solve 1-two sum" 
+
 ## FAQ:
 - Why not do the same problem so that we can discuss it together?
 - A problem might require the solver to understand several prerequisites (e.g. data structure used or continuation of a previous problem). I think it’s better to choose our own problems because every developer has their own timelines in their learning process. 
