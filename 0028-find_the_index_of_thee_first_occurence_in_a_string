@@ -1,0 +1,29 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        left, right = 0, 0
+
+        while left < len(haystack) - len(needle) + 1:
+            if haystack[left + right] == needle[right]:
+                right += 1
+            else:
+                left += 1
+                right = 0
+            if right == len(needle):
+                return left
+        
+        return -1
+        
+        # abuse pyton substrings [:]
+        #
+        # for i in range(len(haystack)): 
+        #     if i+len(needle)>len(haystack):
+        #         break
+        #     if haystack[i:i+len(needle)]==needle:
+        #         return i
+        # return -1
+
+### NOTES
+# trying not to cheat w/ python by using find() or index(), or even
+# check substrings with [:]. The simplest way of doing this is by
+# treating it as a sliding window problem, where we will stop
+# once the remaining substring is shorter than the needle.
