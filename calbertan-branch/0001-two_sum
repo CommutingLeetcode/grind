@@ -1,0 +1,23 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        codex = {}
+        
+        # for i in range(len(nums)):
+        #     if (target - nums[i]) not in codex:
+        #         codex[nums[i]] = i
+        #     else:
+        #         return [ codex[target-nums[i]], i]
+
+        for i, num in enumerate(nums): #enumerate give index and value at the same time
+            if target-num in codex:
+                return [codex[target-num],i]
+            elif num not in codex:
+                codex[num] = i
+
+### NOTES
+# dictionaries help map values to another values. In this case, 
+# we are mapping the values in nums to their positions. Since 
+# dictionaries allow for O(1) lookup time, we can search for 
+# target-nums[i] and get the position of the current values' "pair",
+# solving this problem in O(n) time. We can also use ENUMERATE, 
+# which maps to the index and value
