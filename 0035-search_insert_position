@@ -1,0 +1,28 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        low=0
+        high=len(nums)
+
+        while high > low:
+            mid = (high+low) // 2
+            if nums[mid] > target:
+                high = mid
+            if nums[mid] < target:
+                low = mid+1
+            if nums[mid] == target:
+                return mid
+    
+        return high
+        
+### NOTES
+# Basically binary search, but a few things to keep in mind
+# 
+# IMPORTANT
+# to keep in mind because that means after an iteration, the value
+# of low and high in the previous iteration should not be 
+# considered.
+#
+# since high=len(nums), it means that nums[high] is expected
+# to go out of the array. This means when changing doing high=mid,
+# we don't have to do a -1, unlike low=mid+1. We the stop searching
+# when high > low or when nums[mid] == target
