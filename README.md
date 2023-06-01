@@ -30,14 +30,15 @@ Rules:
 
 1. ONE leetcode problem in a day (you can do more than one which doens’t affect the rules)
 2. Push your solution file (code) to github, including a short explanation as a multiline comment at the bottom of the file: 
-data structure(s) used
-3. One thing that’s unique about this problem and what you learnt from it
-4. Failure to complete the steps above will result in owing money to other members, a total of 15 dollars divided equally to other members who are participating
+- data structure(s) used
+- One thing that’s unique about this problem and what you learnt from it
+- Time and space complexity
+3. Failure to complete the steps above will result in owing money to other members, a total of 15 dollars divided equally to other members who are participating
 
 ## Format:
 
 1. Each participant should create a branch from main
-2. For each problem, put the solution and the brief explanation (as a comment) on a single code file (example: .py) called ####-title-name . An example of would be 0001-two-sum.py
+2. For each problem, put the solution and the explanation (as a comment) on a single code file (example: .py) called ####-title-name . An example of would be 0001-two-sum.py
 
 ## FAQ:
 - Why not do the same problem so that we can discuss it together?
