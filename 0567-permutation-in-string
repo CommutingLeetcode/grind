@@ -1,0 +1,47 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        if (len(s1) > len(s2)):
+            return False
+        s1Count = [0] * 26
+        s2Count = [0] * 26
+        matches = 0
+        for i in range(len(s1)):
+            s1Index = ord(s1[i]) - ord('a')
+            s2Index = ord(s2[i]) - ord('a')
+            s1Count[s1Index] += 1
+            s2Count[s2Index] += 1
+
+
+        for i in range(26):
+            if(s1Count[i] == s2Count[i]):
+                matches += 1
+
+        l = 0
+        for r in range(len(s1), len(s2)):
+            if matches == 26:
+                return True
+            rIndex = ord(s2[r]) - ord('a')
+            s2Count[rIndex] += 1
+            if (s1Count[rIndex] == s2Count[rIndex]):
+                matches += 1
+            elif (s2Count[rIndex] == 1 + s1Count[rIndex]):
+                matches -= 1
+            
+            lIndex = ord(s2[l]) - ord('a')
+            s2Count[lIndex] -= 1
+            if (s1Count[lIndex] == s2Count[lIndex]):
+                matches += 1
+            elif (s2Count[lIndex] + 1 ==  s1Count[lIndex]):
+                matches -= 1
+            l += 1
+        return matches == 26 
+
+"""
+data structure used: sliding window and array
+there are 3 steps to this 
+1. defining the 2 arrays for counting occurences of alphabets and actually counting them
+2. finding the inital number of matches
+3. iterating through the loop to find if the number of matches ever reach 26
+Number 3 is the trickiest part because this is the part where the sliding window happens. the right pointer keeps track of new characters and adds them to the count. The left pointer takes care of removing them.
+The time complexity is = O(len(s1)) + O(26) + O(n) = O(n)
+"""
