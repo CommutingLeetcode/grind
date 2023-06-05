@@ -1,0 +1,39 @@
+class Solution:
+    """
+    @param: strs: a list of strings
+    @return: encodes a list of strings to a single string.
+    """
+    def encode(self, strs):
+        # write your code 
+        encoded = ""
+        for n in strs:
+            encoded += str(len(n)) + "#" + n;
+        return encoded
+
+
+    """
+    @param: str: A string
+    @return: dcodes a single string to a list of strings
+    """
+    def decode(self, str):
+        strs = []
+        i = 0
+        while i < len(str):
+            j = i
+            while str[j] != "#":
+                j += 1
+            wordlen = int(str[i:j])
+            strs.append(str[j+1 : j+1+wordlen])
+            i = j+1+wordlen
+
+        return strs
+            
+            
+### Notes
+# A way to encode strings is by adding a special character to indicate
+# where a word ends, such as ["Leet", "Code"] -> Leet#Code -> Leet Code. 
+# This leads to a problem though when the word contains that special 
+# character, ["Leet", "C#de"] -> Leet#Co#de -> Leet Co de. To combat
+# this is by adding a number before the special character, so that our
+# decode function knows the size of the string when reading a special
+# character. Line 25 is to adjust for words with len > 9.
