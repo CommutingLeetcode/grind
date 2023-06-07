@@ -19,4 +19,4 @@ class Solution:
 # DO a postfix and do the same but from right to left
 
 # Time complexity: O(n) because it's traversing the list twice
-# space complexity: O(n) because return a new array of size input
+# Space complexity: O(n) because return a new array of size input
