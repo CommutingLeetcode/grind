@@ -1,0 +1,23 @@
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        l = 0
+        r = len(nums) - 1
+        least = nums[0]
+        while l <= r:
+            if nums[l] < nums[r]:
+                least = min(least, nums[l])
+            
+            m = (l + r) // 2
+            least = min(least, nums[m])
+            if nums[m] >= nums[l]:
+                l = m + 1
+            else:
+                r = m - 1
+        return least
+
+'''
+- binary search
+- super wierd to understand at first, just remember that this is a specific type of list. It was once sortecd, but was modified so that the minimum is always in the right sorted array (or the very left element if the whole list is sorted). The very first if statement is used to check whether the list is already sorted, if so get the leftmost one and compare it with our current least. The next logic is to either move left or right which is rather easy to understand
+- log(n) because this is binary search
+- no space complexity
+'''
