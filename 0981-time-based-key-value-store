@@ -1,0 +1,43 @@
+class TimeMap:
+
+    def __init__(self):
+        self.aMap = {}
+
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        if key not in self.aMap:
+            self.aMap[key] = []
+        self.aMap[key].append((value, timestamp))
+
+    def get(self, key: str, timestamp: int) -> str:
+        res = ""
+        if key not in self.aMap:
+            return res
+
+        l = 0
+        r = len(self.aMap[key]) - 1
+        while l <= r:
+            m = (l + r) // 2
+            if self.aMap[key][m][1] == timestamp:
+                res = self.aMap[key][m][0]
+                return res
+            elif (self.aMap[key][m][1] < timestamp):
+                res = self.aMap[key][m][0]
+                l = m + 1
+            else:
+                r = m - 1
+        return res
+        
+
+
+# Your TimeMap object will be instantiated and called as such:
+# obj = TimeMap()
+# obj.set(key,value,timestamp)
+# param_2 = obj.get(key,timestamp)
+
+'''
+1. binary search and maps (key: string, value: list of tuples)
+2. took longer than expected. Sometimes you jsut gotta memorize binary search. But other than that should be easy
+3. time complexity for get O(log n) for set is O(1)
+4. space complexity is O(n) for the map
+'''
