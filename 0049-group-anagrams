@@ -1,0 +1,33 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        #we're going to use a map
+        solution = {}
+        #iterate through strs
+        for str in strs:
+            
+            #iterate through all the chars in string str
+            count = [0] * 26
+            
+            for char in str: 
+                #count the characters and store it in list "count"
+                count[ord(char) - ord('a')] += 1
+                
+            #store "count" as key in a map, if that specific "count" key already exists, append it
+            tupledCount = tuple(count)
+            if (solution.get(tupledCount, 0) != 0):
+                solution[tupledCount].append(str)
+            else:
+                solution[tupledCount] = [str]
+        
+        return solution.values()
+            
+'''
+time complexity
+say n is the number of strings in array strs
+and m is the average number of characters in a single string 'str'
+then time complexity is O(n*m)
+
+space complexity
+we need a map, O(n)
+the other lists like count is fix sized, so we can neglect them as n grows
+'''
