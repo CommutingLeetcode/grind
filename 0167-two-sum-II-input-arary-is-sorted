@@ -1,0 +1,25 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        #input = [int], int target
+        #output = [int]
+        #define left and right pointer
+        l = 0
+        r = len(numbers) - 1
+        #iterate with while loop
+        while(l < r):
+            currentSum = numbers[l] + numbers[r]
+            #if current sum > target; decrement right
+            if(currentSum > target):
+                r -= 1
+            #else; increment left
+            elif(currentSum < target):
+                l += 1
+            else:
+                return [l+1, r+1]
+            
+            
+'''
+this has to be the simplest two pointer problem out there, very straightforward just like valid anagram
+time complexity O(n)
+space complexity O(1)
+'''
