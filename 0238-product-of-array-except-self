@@ -1,0 +1,26 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        
+        result = [1] * n
+
+        accumulator = 1
+        # first iteration from start to finish
+        for i in range(n):
+            result[i] = accumulator
+            accumulator = accumulator * nums[i]
+        
+        #second iteration from finish to start
+        accumulator = 1
+        for i in range(n-1, -1, -1):
+            result[i] = accumulator * result[i]
+            accumulator = accumulator * nums[i]
+        print(result)
+            
+        return result
+
+'''
+this one is a common pattern I think of getting the prefix and postfix of the product of an index
+time complexity: O(n)
+space complexity excluding output array: O(1)
+'''
