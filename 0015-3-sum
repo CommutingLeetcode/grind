@@ -1,0 +1,42 @@
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        #-4, -1, -1, -1, 0, 1, 2
+        #input: array of int
+        #output: array or arrays containing integers
+        output = []
+        #sort the array
+        nums.sort()
+        
+        #iterate through all the elements
+        for i, ele in enumerate(nums):
+            #if ele is same as previous, skip that iteration (because we've already had that specific number as our first choice).
+            if i > 0 and ele == nums[i-1]:
+                continue                
+            
+            #now we have a twosum problem w/ sorted input, we need to find a pair where the when added with ele is eq to 0
+            l, r = i + 1, len(nums) -1
+            
+            while(l < r):
+                leftValue = nums[l]
+                rightValue = nums[r]
+                threeSum = leftValue + rightValue + ele
+                if threeSum == 0:
+                    output.append([ele, leftValue, rightValue])
+                    l += 1
+                    
+                    #similar concept to line 13, we can skip iteration if we've already had that number as our second choice
+                    while l < r and nums[l - 1] == nums[l]:
+                        l += 1
+                elif threeSum > 0:
+                    r -= 1
+                else:
+                    l += 1
+                    
+        return output
+    
+'''
+Concept is very simple, it'just doing twoSum II n times really. The tricky part is on how to avoid the duplicates, which we can do by skipping iterations where previous element is the same current element (this works because the array is sorted). Or we can create a set which is somewhat cheating (not really).
+Time complexity = O(n^2)
+space complexity - O(1)
+data structure used is pointers
+'''
