@@ -1,0 +1,51 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+'''
+using recursive DFS
+'''
+class Solution:
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if p is None and q is None:
+            return True
+        elif p is None and q is not None:
+            return False
+        elif p is not None and q is None:
+            return False
+        else:
+            if p.val != q.val:
+                return False
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+    
+# '''
+# using iterative dfs/bfs approach (just change the popping position LIFO/FIFO)
+# '''
+# class Solution:
+#     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+#         if p is None and q is None:
+#             return True
+#         stack = []
+#         stack.append((p, q))
+#         while(stack):
+#             currP, currQ = stack.pop()
+#             if currP and currQ:
+#                 if currP.val != currQ.val:
+#                      return False
+#                 stack.append((currP.left, currQ.left))
+#                 stack.append((currP.right, currQ.right))
+#             elif (not currP and not currQ):
+#                 continue
+#             else:
+#                 return False
+#         return True
+
+'''
+very intuitive one once I've done other easy tree problems
+time complexity: O(n) for both iteratie and recursive approach because we're going through each node once only
+spacy complexity: O(log n) because 
+'''
