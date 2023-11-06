@@ -1,0 +1,25 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        def recur(root: Optional[TreeNode]) -> (bool, int):
+            if root is None:
+                return (True, 0)
+            isBalancedLeft, maxDepthLeft = recur(root.left)
+            isBalancedRight, maxDepthRight = recur(root.right)
+            isBalanced = isBalancedLeft and isBalancedRight and (abs(maxDepthLeft-maxDepthRight) < 2)
+            maxDepth = max(maxDepthLeft, maxDepthRight) + 1
+            return (isBalanced, maxDepth)
+        
+        return recur(root)[0]
+            
+'''
+most important thing here is to create a recusive function that returns 2 values:
+1. the max height of itself
+2. if its left subtree and right subtree is balanced AND if itself is balanced
+O(n) time complexity
+'''
