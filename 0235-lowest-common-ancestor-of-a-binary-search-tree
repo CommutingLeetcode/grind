@@ -1,0 +1,31 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        #4 cases
+        curr = root
+        while(curr):
+            # p < current and q > current
+            if p.val < curr.val and q.val > curr.val:
+                return curr
+            # p > current and q > current
+            elif p.val > curr.val and q.val > curr.val:
+                curr = curr.right
+            # p < current and q < current
+            elif p.val < curr.val and q.val < curr.val:
+                curr = curr.left
+            # p = current or q = current
+            else:
+                return curr
+                
+'''
+easiest medium I've ever solved
+time complexity: O(logn) because we're only iterating at max the height of the tree, which is log(n). However, if the BST is not balanced it could become O(n) because we're basically iterating through a linked list
+
+space complexity: O(1)
+'''
