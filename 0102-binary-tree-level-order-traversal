@@ -4,6 +4,30 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# class Solution:
+#     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+#         queue = []
+#         queue.append((root, 0))
+#         res = []
+#         heightTracker = 0
+#         temp = []
+#         while queue:
+#             curr, height = queue.pop(0)
+#             if curr:
+#                 if heightTracker != height:
+#                     heightTracker = height
+#                     res.append(temp)
+#                     temp = []
+#                 temp.append(curr.val)
+#                 if curr.left:                
+#                     queue.append((curr.left, height + 1))
+#                 if curr.right: 
+#                     queue.append((curr.right, height + 1))
+#         if temp: 
+#             res.append(temp)
+#         return res
+
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         queue = []
