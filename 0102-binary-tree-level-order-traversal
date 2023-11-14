@@ -1,0 +1,34 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        queue = []
+        if root:
+            queue.append(root)
+        res = []
+        while queue:
+            #take the length of the queue, which will indicate how many times to pop for the current level
+            level = []
+            levelLength = len(queue)
+            for i in range(levelLength):
+                curr = queue.pop(0)
+                if curr:
+                    level.append(curr.val)
+                    if curr.left:                
+                        queue.append(curr.left)
+                    if curr.right: 
+                        queue.append(curr.right)
+            # append the level list to res
+            res.append(level)
+        return res
+    
+'''
+this is my second solution, which is the neetcode solution. This one requires you to think out of the box because we usually only pop once per while loop iteration. This solution said that "no, you can actually pop x times, x being the number of nodes in the level. How do you get the level? By getting the length of the queue at the start of the while loop iteration". Compared to my first solution being tracking the depth of the nodes, I think this one is more elegant
+
+O(n) runtime and O(n) space
+
+'''
