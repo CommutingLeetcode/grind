@@ -1,0 +1,33 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        queue = []
+        if root:
+            queue.append(root)
+        res = []
+        while queue:
+            #take the length of the queue, which will indicate how many times to pop for the current level
+            level = []
+            levelLength = len(queue)
+            for i in range(levelLength):
+                curr = queue.pop(0)
+                if curr:
+                    level.append(curr.val)
+                    if curr.left:                
+                        queue.append(curr.left)
+                    if curr.right: 
+                        queue.append(curr.right)
+            # append the level list to res
+            res.append(level[-1])
+        return res
+
+        
+'''
+This is exactly the same problem as binary tree level order traversal. Instead of appending the whole list, we only append the last element on the level list.
+O(n) time complexity and O(n/2) space complexity which is the point where the queue is at its most capacity, in which in a complete binary tree it's the level with the most nodes. This can be approximated to n/2
+'''
