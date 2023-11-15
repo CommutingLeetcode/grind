@@ -1,0 +1,36 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        # sliding window
+        l = 0
+        
+        # map for counting # of occurences of each character in the window
+        count = {}
+        maxF = 0
+        res = 0
+        
+        for r in range (0, len(s)):
+            # update the count map with the latest character
+            count[s[r]] = 1 + count.get(s[r], 0)
+            
+            # update the maxF variable to store the character w/ the most occurences in the window
+            maxF = max(maxF, count[s[r]])
+
+            # see if len(window) - most repeated character in the window <= k
+            valid = (((r - l + 1) - maxF) <= k)
+            
+            # update the res
+            if valid:
+                res = max(res, r - l + 1)
+                
+            # increase left pointer if not valid
+            if not valid:
+                count[s[l]] -= 1
+                l += 1
+                
+        return res
+        
+'''
+I haven't solved a sliding window in a while. But this refreshes my mind on it. Usually the loop is a for loop and we use the right pointer as the iterator.
+
+O(n) time and space complexity
+'''
