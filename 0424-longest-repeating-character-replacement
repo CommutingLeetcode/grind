@@ -30,7 +30,10 @@ class Solution:
         return res
         
 '''
-I haven't solved a sliding window in a while. But this refreshes my mind on it. Usually the loop is a for loop and we use the right pointer as the iterator.
+I haven't solved a sliding window in a while. But this refreshes my mind on it. Usually, the loop is a for loop and we use the right pointer as the iterator.
+things to note:
+1. you don't actually require a res variable, as the size of the sliding window will maintain itself to the end of the list (it will not increase more than the largest valid sliding window)
+2. in the neetcode solution, we're using a while loop to update the left pointer. But that's not needed because just by incrementing l by 1, we're already in the valid range
 
 O(n) time and space complexity
 '''
