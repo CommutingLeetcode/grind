@@ -1,0 +1,30 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        lead = head
+        for i in range(n):
+            lead = lead.next
+        follower = head
+        
+        # case 1: lead is null (remove the first node)
+        if lead is None:
+            head = follower.next
+            follower.next = None
+            
+        # case 2: lead is not null
+        else:
+            while lead.next:
+                lead = lead.next
+                follower = follower.next
+            follower.next = follower.next.next
+        
+        return head
+        
+'''
+what we did here is run through some simple test cases and try to identify edge cases, what would happen if? Remember to always check the constraints
+O(n) time complexity
+'''
