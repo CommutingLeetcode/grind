@@ -1,0 +1,24 @@
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        # turn the list of stones to a max heap first
+        stones = [-stone for stone in stones]
+        heapq.heapify(stones)
+        
+        # while loop to keep iterating as theres at least 1 element
+        while(len(stones) > 1):
+            # popping 2 greates elements
+            big = -heapq.heappop(stones)
+            small = -heapq.heappop(stones)
+            
+            if (big > small):
+                heapq.heappush(stones, small - big)
+        
+        stones.append(0)
+        return -stones[0]
+'''
+time complexity
+for converting array to heap: O(n)
+for popping and pushing each is O(log(n)): 2 pops and 1 pushes every iteration which means O(3log(n)) for every iteration
+
+which means the time complexity of O(nlogn) for the whole algorithm
+'''
