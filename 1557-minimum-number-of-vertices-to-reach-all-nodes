@@ -1,0 +1,16 @@
+class Solution:
+    def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -> List[int]:
+        hasIncoming = set()
+        result = []
+        # find all vertices that do NOT have incoming edges
+        for edge in edges:
+            hasIncoming.add(edge[1])
+        for i in range(n):
+            if i not in hasIncoming:
+                result.append(i)
+                    
+        return result
+
+# time complexity is O(n)
+# space complexity is O(n) from the set
+# this problem is very easy once you identify that the only nodes that we need to traverse the whole graph is the root nodes aka the nodes that do not have incoming edges.
