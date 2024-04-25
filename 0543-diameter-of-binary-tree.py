@@ -34,8 +34,7 @@ class Solution:
 
 
 '''
-This one took me a little bit by surprise because we had to use global variables. If i knew we can use globals and python syntax in the back of my head, this would've been easier I believe.
-
+The main thing to remember is that the recursive function only returns the max depth from calling itself on its children. But the calculation of the diameter and comparison to get the max is not returned, it's rather done inside the function and stored in a global variable
 Time complexity: in a tree of n nodes, the height would be log(n). The recursive function calls each node once in the algorithm, and the processing time for each node would be O(1). in depth 0 = O(1), depth 1 = O(2), depth 3 = O(8), depth log(n) = O(n). If we add them all up it'll have O(n) processing time
 
 Space complexity: depth of the recursive call stack = height of the tree, best case O(log(n)) on balanced trees and worst case O(n) on skewed trees
