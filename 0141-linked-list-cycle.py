@@ -19,3 +19,8 @@ class Solution:
                 fast = fast.next
             slow = slow.next
         return False
+
+"""
+keep in mind this for this solution, the fast pointer will not meet the slow pointer in the start of the cycle. I would want to make it a standard that when doing a problem like this,
+the 2 pointers meet at the start of the cycle. This will be useful for other problems
+"""
